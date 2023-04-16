@@ -306,6 +306,7 @@ def main():
             args.global_rank)
         model.train()
         for step, batch in enumerate(train_dataloader):
+            print('step: ', step, ', batch_size: ', len(batch))
             batch = to_device(batch, device)
             outputs = model(**batch, use_cache=False)
             loss = outputs.loss
