@@ -313,7 +313,7 @@ def main():
         mean_loss = 0
         for step, batch in enumerate(train_dataloader):
             print('step: ', step, ', batch_size: ', len(batch))
-            if step > 500:
+            if step > 300:
                 break
             batch = to_device(batch, device)
             outputs = rm_model(**batch, use_cache=False)
