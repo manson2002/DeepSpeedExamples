@@ -308,7 +308,7 @@ def main():
         model.train()
         for step, batch in enumerate(train_dataloader):
             print('step: ', step, ', batch_size: ', len(batch))
-            if step > 500:
+            if step > 50000:
                 break
             batch = to_device(batch, device)
             outputs = model(**batch, use_cache=False)
