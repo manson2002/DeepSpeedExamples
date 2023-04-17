@@ -227,6 +227,7 @@ def main():
     else:
         train_sampler = DistributedSampler(train_dataset)
         eval_sampler = DistributedSampler(eval_dataset)
+    print('train_batch_size: ', args.per_device_train_batch_size, ', eval_batch_size: ', args.per_device_eval_batch_size)
     train_dataloader = DataLoader(train_dataset,
                                   collate_fn=data_collator,
                                   sampler=train_sampler,
@@ -312,6 +313,8 @@ def main():
         mean_loss = 0
         for step, batch in enumerate(train_dataloader):
             print('step: ', step, ', batch_size: ', len(batch))
+            if step > 500:
+                break
             batch = to_device(batch, device)
             outputs = rm_model(**batch, use_cache=False)
             loss = outputs["loss"]

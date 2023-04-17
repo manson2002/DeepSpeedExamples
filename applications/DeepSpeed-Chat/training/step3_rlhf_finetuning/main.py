@@ -409,7 +409,7 @@ def main():
             args.global_rank)
         for step, (batch_prompt, batch_unsupervised) in enumerate(
                 zip(prompt_train_dataloader, unsupervised_train_dataloader)):
-            print('step: ', step, ', batch_prompt size: ', len(batch_prompt), ', batch_unsupervised size:', len(batch_unsupervised))
+            print('step: ', step, ', batch_prompt size: ', len(batch_prompt))
             batch_prompt = to_device(batch_prompt, device)
             if batch_unsupervised is not None:
                 batch_unsupervised = to_device(batch_unsupervised, device)

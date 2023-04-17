@@ -14,5 +14,5 @@ fi
 mkdir -p $OUTPUT
 
 deepspeed --num_gpus 1 main.py --model_name_or_path facebook/opt-125m \
-   --num_padding_at_beginning 1 --gradient_accumulation_steps 2 --zero_stage $ZERO_STAGE \
+   --num_padding_at_beginning 1 --gradient_accumulation_steps 32 --zero_stage $ZERO_STAGE \
    --deepspeed --output_dir $OUTPUT &> $OUTPUT/training.log
