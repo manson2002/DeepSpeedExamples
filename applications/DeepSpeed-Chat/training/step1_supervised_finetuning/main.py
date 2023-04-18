@@ -99,7 +99,7 @@ def parse_args():
                         help="Weight decay to use.")
     parser.add_argument("--num_train_epochs",
                         type=int,
-                        default=1,
+                        default=2,
                         help="Total number of training epochs to perform.")
     parser.add_argument(
         "--gradient_accumulation_steps",
@@ -295,11 +295,12 @@ def main():
 
     # Train!
     print_rank_0("***** Running training *****", args.global_rank)
-    print_rank_0(
-        f"***** Evaluating perplexity, Epoch {0}/{args.num_train_epochs} *****",
-        args.global_rank)
-    perplexity = evaluation(model, eval_dataloader)
-    print_rank_0(f"ppl: {perplexity}", args.global_rank)
+    
+#     print_rank_0(
+#         f"***** Evaluating perplexity, Epoch {0}/{args.num_train_epochs} *****",
+#         args.global_rank)
+#     perplexity = evaluation(model, eval_dataloader)
+#     print_rank_0(f"ppl: {perplexity}", args.global_rank)
 
     for epoch in range(args.num_train_epochs):
         print_rank_0(
